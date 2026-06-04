@@ -1,16 +1,44 @@
-# React + Vite
+# 学生驿站 — 前端（React + Vite）
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+校园快递驿站数字化管理系统前端，基于 React 18 + Vite + Ant Design 5。
 
-Currently, two official plugins are available:
+## 启动方式
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+# 先启动后端（server/ 目录）
+cd ../server && npm run dev
 
-## React Compiler
+# 再启动前端
+npm run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+前端访问：http://localhost:5173  
+后端 API：http://localhost:3001
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 测试账号
+
+| 账号 | 密码 | 身份 | 手机号 | 说明 |
+|------|------|------|--------|------|
+| admin | 123456 | 驿站管理员 | — | 管理后台，可入库/核验/处理寄件/管滞留 |
+| lzk | 123456 | 学生 | 13812345678 | 有1个待取件包裹、1条退回通知、2条寄件订单 |
+| kk | 123456 | 学生 | 15934125523 | 有2个待取件包裹、1条已完成取件记录、2条寄件订单 |
+| poster | 123456 | 快递员 | — | 可查看已揽件凭证列表 |
+
+> 登录时学生账号需填写对应手机号，否则无法收到通知。
+
+---
+
+## 测试数据覆盖
+
+| 功能 | 测试入口 | 测试数据 |
+|------|---------|---------|
+| 首页通知 | 学生-kk 登录 | 2 条未读取件通知 |
+| 包裹查询 | 学生-取件页 | 搜索取件码 100001~100003 |
+| 取件核验 | 管理员-取件核验 | 搜索 SF1000000001，取件码 100001 |
+| 发送通知 | 管理员-包裹列表 | SF1000000004（已入库未通知） |
+| 寄件下单 | 学生-寄件页 | 填写信息提交 |
+| 揽件确认 | 管理员-寄件订单 | SHIP1000000001（待处理） |
+| 快递员凭证 | 快递员-列表页 | VCH-SHIP1000000002（已揽件） |
+| 滞留管理 | 管理员-滞留管理 | SF1000000006（待退回），SF1000000007（已退回） |

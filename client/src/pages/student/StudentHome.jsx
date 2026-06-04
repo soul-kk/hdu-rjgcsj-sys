@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { Badge, message } from 'antd'
 import { BellOutlined, RightOutlined } from '@ant-design/icons'
 import useAuthStore from '../../store/authStore'
@@ -11,6 +11,7 @@ const STATUS_BG = { '待处理': '#FFF7E6', '已揽件': '#E6F0FF', '已寄件':
 export default function StudentHome() {
   const { user } = useAuthStore()
   const navigate = useNavigate()
+  const location = useLocation()
   const [notifications, setNotifications] = useState([])
   const [shipOrders, setShipOrders] = useState([])
 
@@ -18,7 +19,7 @@ export default function StudentHome() {
     if (user?.phone) {
       loadData()
     }
-  }, [user])
+  }, [user, location.pathname])
 
   async function loadData() {
     try {

@@ -82,6 +82,11 @@ async function pickup(req, res) {
     phone,
     admin_id: req.user.userId,
   });
+  // 将该包裹对应的取件通知标为已读
+  await Notification.update(
+    { is_read: true },
+    { where: { parcel_id: parcel.id, type: '取件通知' } }
+  );
   return res.json({ code: 0, message: '取件成功', data: parcel });
 }
 
