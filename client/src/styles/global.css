@@ -1,0 +1,29 @@
+:root {
+  --bg:             #F5F7FA;
+  --surface:        #FFFFFF;
+  --border:         #E8ECF0;
+  --primary:        #1677FF;
+  --primary-light:  #E6F0FF;
+  --success:        #52C41A;
+  --success-light:  #F6FFED;
+  --warning:        #FA8C16;
+  --warning-light:  #FFF7E6;
+  --danger:         #FF4D4F;
+  --danger-light:   #FFF1F0;
+  --text-primary:   #1A1A2E;
+  --text-secondary: #6B7280;
+  --text-muted:     #9CA3AF;
+  --sidebar-bg:     #001529;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+}
