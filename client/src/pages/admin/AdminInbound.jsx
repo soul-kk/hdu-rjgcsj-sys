@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Card, Form, Input, Button, message, Row, Col, Result } from 'antd'
+import { Card, Form, Input, Button, message, Row, Col, InputNumber } from 'antd'
 import { InboxOutlined, BellOutlined } from '@ant-design/icons'
 import { parcelApi } from '../../api'
 
@@ -49,6 +49,18 @@ export default function AdminInbound() {
                 <Col span={12}>
                   <Form.Item label="收件人手机号" name="recipient_phone" rules={[{ required: true, message: '请输入手机号' }]}>
                     <Input placeholder="138****8888" />
+                  </Form.Item>
+                </Col>
+              </Row>
+              <Row gutter={12}>
+                <Col span={12}>
+                  <Form.Item label="重量（kg）" name="weight">
+                    <InputNumber min={0.01} max={999} precision={2} placeholder="0.00" style={{ width: '100%' }} />
+                  </Form.Item>
+                </Col>
+                <Col span={12}>
+                  <Form.Item label="运费（元）" name="freight">
+                    <InputNumber min={0} max={99999} precision={2} placeholder="0.00" style={{ width: '100%' }} />
                   </Form.Item>
                 </Col>
               </Row>

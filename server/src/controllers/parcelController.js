@@ -6,7 +6,7 @@ const { generatePickupCode } = require('../services/generator');
 
 // 管理员：包裹入库
 async function inbound(req, res) {
-  const { tracking_no, recipient_name, recipient_phone, remark } = req.body;
+  const { tracking_no, recipient_name, recipient_phone, remark, weight, freight } = req.body;
   if (!tracking_no || !recipient_name || !recipient_phone) {
     return res.json({ code: 1, message: '快递单号、收件人姓名和手机号必填', data: null });
   }
@@ -16,6 +16,8 @@ async function inbound(req, res) {
   const pickup_code = await generatePickupCode();
   const parcel = await Parcel.create({
     tracking_no, recipient_name, recipient_phone, remark,
+    weight: weight || null,
+    freight: freight || null,
     pickup_code, status: '已入库', notify_status: '未发送',
     admin_id: req.user.userId,
   });

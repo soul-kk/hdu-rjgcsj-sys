@@ -18,6 +18,8 @@ const Parcel = sequelize.define('Parcel', {
     defaultValue: '未发送',
   },
   remark: { type: DataTypes.STRING(500) },
+  weight: { type: DataTypes.DECIMAL(6, 2) },
+  freight: { type: DataTypes.DECIMAL(8, 2) },
   admin_id: { type: DataTypes.INTEGER },
 }, {
   tableName: 'parcels',

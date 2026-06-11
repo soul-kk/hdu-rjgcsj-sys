@@ -12,7 +12,7 @@ const ShipOrder = sequelize.define('ShipOrder', {
   receiver_phone: { type: DataTypes.CHAR(11) },
   receiver_address: { type: DataTypes.STRING(255) },
   item_type: {
-    type: DataTypes.ENUM('普通物品', '易碎物品', '液体物品', '电子产品', '禁寄物品'),
+    type: DataTypes.ENUM('普通物品', '易碎物品', '液体物品', '电子产品', '禁寄物品', '退回件'),
     defaultValue: '普通物品',
   },
   weight: { type: DataTypes.DECIMAL(6, 2) },

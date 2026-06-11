@@ -39,8 +39,8 @@ async function list(req, res) {
 async function courierList(req, res) {
   const { type = 'ship' } = req.query;
   const where = type === 'return'
-    ? { status: '已揽件', item_type: { [Op.like]: '%退回%' } }
-    : { status: '已揽件' };
+    ? { status: '已揽件', item_type: '退回件' }
+    : { status: '已揽件', item_type: { [Op.ne]: '退回件' } };
   const orders = await ShipOrder.findAll({ where, order: [['created_at', 'DESC']] });
   return res.json({ code: 0, message: 'ok', data: orders });
 }
